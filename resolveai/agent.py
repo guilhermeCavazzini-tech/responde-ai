@@ -4,6 +4,8 @@ from resolveai.sub_agents.management_agent import management_agent
 from resolveai.sub_agents.registration_agent import registration_agent
 from resolveai.sub_agents.risk_agent import risk_agent
 
+from .prompt import prompt 
+
 from typing import Dict
 from google.adk.agents import Agent
 from resolveai.utils.model import MODEL_CONFIG
@@ -52,7 +54,7 @@ root_agent = Agent(
     name="urban_management_supervisor",
     model=MODEL_CONFIG["light"],
     description="Agente supervisor para coordenação de todos os agentes de gestão urbana",
-    instruction="Supervise o funcionamento de todos os agentes, coordene ações prioritárias e garanta a resolução eficiente de problemas",
+    instruction=(prompt),
     tools=[supervise_agents],
     sub_agents=[detection_agent, risk_agent, registration_agent, analysis_agent, management_agent]
 )
