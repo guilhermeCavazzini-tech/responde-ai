@@ -1,7 +1,7 @@
 setup:
 	pip install -r requirements.txt
 chat:
-	delete-cache +
+	$(MAKE) delete-cache 
 	adk web
 venv:
 	source .venv/bin/activate
